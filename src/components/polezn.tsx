@@ -241,7 +241,7 @@ export default function Polezn() {
       {/* <h2 className="md:block hidden main-h2-font-size text-center">
         мы можем быть полезны
       </h2> */}
-      <h2 className=" main-h2-font-size md:mt-6 text-black md:leading-[100%] leading-7 max-w-[700px]">
+      <h2 className=" main-h2-font-size md:mt-6 text-black md:leading-[100%] leading-7 max-w-[700px] md:block hidden">
         <span className="border-style-pink rounded-full">
           <span className="bg-white rounded-full md:px-2 px-1">Кому и чем</span>
         </span>{" "}
