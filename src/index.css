@@ -1,0 +1,19 @@
+body #root * {
+  font-family: "Nunito", sans-serif;
+  /* padding: 0;
+  margin: 0; */
+}
+
+@import "tailwindcss";
+
+@layer components {
+  .main-padding {
+    @apply md:pt-8 md:pb-30 py-4 lg:px-30 md:px-20 sm:px-10 px-5;
+  }
+  .main-h2-font-size {
+    @apply 2xl:text-7xl xl:text-6xl lg:text-5xl md:text-4xl sm:text-3xl text-2xl font-bold leading-[100%] md:mb-8 mb-4;
+  }
+  .btn-primary {
+    @apply inline-flex items-center px-6 py-3 rounded-full bg-pink-600 text-white hover:bg-pink-700;
+  }
+}
