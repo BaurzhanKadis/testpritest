@@ -23,7 +23,7 @@ import Raschet from "./components/raschet";
 import Dev from "./components/dev";
 import Button from "./assets/sherad/button";
 import Filteracia from "./components/filteracia";
-// import Otziv from "./components/otziv";
+import Otziv from "./components/otziv";
 
 function App() {
   const handleScroll = () => {
@@ -86,7 +86,7 @@ function App() {
         {/* Наша продукция */}
         <Prod />
         {/* Отзывы наших клиентов */}
-        {/* <Otziv /> */}
+        <Otziv />
         {/* Разработаем ваш фирменный мерч под ключ */}
         <Dev />
         {/* Почему именно мы? */}
