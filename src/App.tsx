@@ -1,6 +1,3 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
 import WhyWe from "./components/why-we";
 import Bot from "./components/bot";
 import RunString from "./components/run-string";
@@ -15,7 +12,6 @@ import "./App.css";
 import Merch from "./components/merch";
 import Prod from "./components/prod";
 import FotoClients from "./components/foto-clients";
-// import MobFotoClients from "./components/mob-foto-clients";
 import FotoRobot from "./components/foto-robot";
 import WhoAreWe from "./components/who-are-we";
 import Polezn from "./components/polezn";
@@ -69,17 +65,7 @@ function App() {
           <div className="flex flex-col items-center justify-center"></div>
         </section>
         {/* Фото наших клиентов */}
-        {/* <MobFotoClients /> */}
         <FotoClients />
-        {/* <section className=" bg-[#222] xl:rounded-4xl md:rounded-2xl rounded-lg md:py-8 py-4">
-          <div className="lg:px-30 md:px-20 sm:px-10 px-5">
-            <div className="border-style-pink inline-block rounded-[100px] 2xl:text-7xl xl:text-6xl lg:text-5xl md:text-4xl sm:text-3xl text-2xl text-white">
-              <h2 className="bg-[#222] px-6 py-3 rounded-[100px] font-bold leading-[100%]">
-                Фото наших клиентов
-              </h2>
-            </div>
-          </div>
-        </section> */}
         {/* Фирменный мерч компании оказывает прямое влияние на: */}
         <Merch />
         <RunString color={"#222"} />

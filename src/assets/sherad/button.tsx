@@ -1,6 +1,4 @@
-// import React from "react";
-
-export default function Button({
+const Button = ({
   text,
   handleScroll,
   className,
@@ -8,7 +6,7 @@ export default function Button({
   text: string;
   handleScroll: () => void;
   className: string;
-}) {
+}) => {
   return (
     <button
       onClick={handleScroll}
@@ -17,4 +15,6 @@ export default function Button({
       {text}
     </button>
   );
-}
+};
+
+export default Button;
