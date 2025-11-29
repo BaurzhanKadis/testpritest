@@ -11,7 +11,7 @@ export default function FotoClients() {
     centerMode: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 5,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
@@ -19,18 +19,12 @@ export default function FotoClients() {
     arrows: false,
     responsive: [
       {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 768,
+        breakpoint: 640,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          dots: false,
+          centerMode: false, // Важно отключить для одного слайда
+          dots: true,
         },
       },
     ],
@@ -52,7 +46,7 @@ export default function FotoClients() {
     <section className="bg-[#222] xl:rounded-4xl md:rounded-2xl rounded-lg md:py-8 py-4 md:pb-14 ">
       <div className="md:text-left text-center">
         {/* Заголовок */}
-        <div className="lg:px-30 md:px-20 sm:px-10 px-5 ">
+        <div className="lg:px-30 md:px-20 sm:px-10 px-5 max-w-[1920px] mx-auto">
           <div className=" border-style-pink inline-block rounded-[100px] 2xl:text-7xl xl:text-6xl lg:text-5xl md:text-4xl sm:text-3xl text-2xl text-white mb-8">
             <h2 className="bg-[#222] px-6 py-3 rounded-[100px] font-bold leading-[100%]">
               Фото наших клиентов

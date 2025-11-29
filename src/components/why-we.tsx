@@ -15,7 +15,7 @@ const data = [
 
 export default function WhyWe() {
   return (
-    <section className="main-padding pb-0 lg:mt-[10%]">
+    <section className="main-padding pb-0 lg:mt-[10%] max-w-[1920px] mx-auto">
       <h2 className=" main-h2-font-size text-black">Почему именно мы?</h2>
       <div className=" flex flex-row flex-wrap justify-between md:justify-normal md:gap-[1%] gap-3 overflow-hidden">
         {data.map((i) => (

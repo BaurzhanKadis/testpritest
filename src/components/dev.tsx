@@ -54,7 +54,7 @@ export default function Dev() {
     },
   ];
   return (
-    <section className="main-padding text-center">
+    <section className="main-padding text-center max-w-[1920px] mx-auto">
       <div className="md:hidden block ">
         <h2 className="text-center main-h2-font-size text-black ">
           Разработаем ваш фирменный мерч под ключ

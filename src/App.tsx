@@ -11,7 +11,7 @@ import mobEf2 from "./assets/img/mobEf2.png";
 import "./App.css";
 import Merch from "./components/merch";
 import Prod from "./components/prod";
-import FotoClients from "./components/foto-clients";
+// import FotoClients from "./components/foto-clients";
 import FotoRobot from "./components/foto-robot";
 import WhoAreWe from "./components/who-are-we";
 import Polezn from "./components/polezn";
@@ -20,6 +20,7 @@ import Dev from "./components/dev";
 import Button from "./assets/sherad/button";
 import Filteracia from "./components/filteracia";
 import Otziv from "./components/otziv";
+import Testt from "./components/test-foto";
 
 function App() {
   const handleScroll = () => {
@@ -30,9 +31,9 @@ function App() {
   };
   return (
     <>
-      <div className="max-w-[1920px] mx-auto">
+      <div className="mx-auto">
         {/* banner */}
-        <section className="flex flex-row items-center justify-center md:h-screen w-full lg:px-30 md:px-20 sm:px-10 px-5 bg-[url('assets/img/banner-new.png')] md:bg-contain bg-size-[65%] md:bg-center bg-[85%] bg-no-repeat">
+        <section className="max-w-[1920px] mx-auto flex flex-row items-center justify-center md:h-screen w-full lg:px-30 md:px-20 sm:px-10 px-5 md:0 py-5 bg-[url('assets/img/banner-new.png')] md:bg-contain bg-size-[65%] md:bg-center bg-[85%] bg-no-repeat">
           <div className="  h-full w-full flex flex-col md:flex-row items-center md:justify-between relative">
             <div className="flex flex-col items-start md:items-center justify-center w-full md:w-[23%] md:mb-0 mb-8">
               <p className="text-black 2xl:text-7xl xl:text-5xl lg:text-3xl text-xl font-bold border-[3px]! border-[#bf2e82]! rounded-full md:px-4 md:py-2 px-2 py-0.5">
@@ -51,7 +52,7 @@ function App() {
               </p>
             </div>
             <div className="flex flex-col items-start md:items-center justify-center w-full md:w-[26%] md:mb-0 mb-16">
-              <p className="text-black lg:text-4xl md:text-2xl sm:text-xl font-bold md:leading-10 leading-4 md:mb-6 mb-2 md:text-right w-[70%] md:w-full">
+              <p className="text-black 2xl:text-4xl xl:text-3xl lg:text-xl md:text-lg sm:text-base text-sm font-bold md:leading-10 leading-4 md:mb-6 mb-2 md:text-right w-[70%] md:w-full">
                 Мерч, который работает на вас. Производится
                 <br /> с любовью и вкусом — всегда точно в срок
               </p>
@@ -65,7 +66,8 @@ function App() {
           <div className="flex flex-col items-center justify-center"></div>
         </section>
         {/* Фото наших клиентов */}
-        <FotoClients />
+        {/* <FotoClients /> */}
+        <Testt />
         {/* Фирменный мерч компании оказывает прямое влияние на: */}
         <Merch />
         <RunString color={"#222"} />
@@ -78,7 +80,7 @@ function App() {
         {/* Почему именно мы? */}
         <WhyWe />
         {/*Рассчитаем эффективность вашего мерча в рублях  */}
-        <section className=" relative bg-[#222] xl:rounded-4xl md:rounded-2xl rounded-lg main-padding">
+        <section className="max-w-[1920px] mx-auto relative bg-[#222] xl:rounded-4xl md:rounded-2xl rounded-lg main-padding">
           <h2 className="main-h2-font-size text-white">
             Рассчитаем эффективность вашего мерча в рублях
           </h2>

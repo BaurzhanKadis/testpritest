@@ -16,7 +16,7 @@ export default function Otziv() {
   }, []);
   console.log("ksjbxkajsb");
   return (
-    <section className="main-padding">
+    <section className="main-padding max-w-[1920px] mx-auto">
       <h2 className="main-h2-font-size">Отзывы наших клиентов</h2>
       <div className="container__reviews"></div>
     </section>

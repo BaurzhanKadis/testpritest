@@ -2,7 +2,7 @@ import fon from "../assets/svg/fon-we-tshirt.png";
 
 export default function WhoAreWe() {
   return (
-    <section className="main-padding flex relative overflow-hidden">
+    <section className="main-padding max-w-[1920px] mx-auto flex relative overflow-hidden">
       <div className=" flex-1 z-10">
         <div className=" border-style-pink inline-block rounded-[100px] 2xl:text-7xl xl:text-6xl lg:text-5xl md:text-4xl sm:text-3xl text-2xl text-black md:mb-4 md:mt-15 mt-5">
           <h2 className="bg-[#fff] md:px-6 px-2 md:py-3 py-1 rounded-[100px] font-bold leading-[100%]">

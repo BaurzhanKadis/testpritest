@@ -70,7 +70,7 @@ export default function Prod() {
   };
 
   return (
-    <section className="main-padding ">
+    <section className="main-padding max-w-[1920px] mx-auto">
       <h2 className="md:text-left text-center main-h2-font-size md:mt-6 text-black ">
         Наша продукция
       </h2>

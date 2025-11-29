@@ -106,7 +106,7 @@ export default function Filteracia() {
   }, [calculatePaths]);
 
   return (
-    <section className=" relative lg:pb-0 pb-15 lg:pt-0 pt-2 ">
+    <section className="max-w-[1920px] mx-auto relative lg:pb-0 pb-15 lg:pt-0 pt-2 ">
       <div className="flex lg:absolute top-0">
         <img src={four} alt="four" className="w-[25%]" />
         <h2 className="2xl:text-9xl xl:text-7xl md:text-6xl sm:text-5xl text-4xl lg:w-[50%] w-auto font-bold">

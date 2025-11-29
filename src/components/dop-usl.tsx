@@ -22,7 +22,7 @@ const data = [
 ];
 export default function DopUsl() {
   return (
-    <section className="main-padding md:mt-12 mt-4 md:pb-16">
+    <section className="main-padding max-w-[1920px] mx-auto md:mt-12 mt-4 md:pb-16">
       <h2 className="text-center main-h2-font-size md:mb-12 text-black ">
         Дополнительные услуги
       </h2>

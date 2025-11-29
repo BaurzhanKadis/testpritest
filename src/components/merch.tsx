@@ -9,7 +9,7 @@ const data = [
 ];
 export default function Merch() {
   return (
-    <section className="main-padding md:pb-16 relative overflow-hidden">
+    <section className="main-padding mx-auto max-w-[1920px] md:pb-16 relative overflow-hidden">
       <div className="z-10 relative">
         <h2 className=" main-h2-font-size md:mt-6 text-black md:leading-[100%] leading-7">
           <span className="border-style-pink rounded-full">

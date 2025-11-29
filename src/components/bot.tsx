@@ -6,7 +6,7 @@ const data = [
 ];
 export default function Bot() {
   return (
-    <section className=" overflow-x-clip relative bg-[#222] xl:rounded-4xl md:rounded-2xl rounded-lg md:py-8 py-4 main-padding">
+    <section className="max-w-[1920px] mx-auto overflow-x-clip relative bg-[#222] xl:rounded-4xl md:rounded-2xl rounded-lg md:py-8 py-4 main-padding">
       <h2 className="main-h2-font-size text-white md:text-left text-center">
         Расчет заказа
         <br /> за 1 минуту 24/7

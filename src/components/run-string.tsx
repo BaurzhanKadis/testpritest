@@ -13,6 +13,10 @@ export default function RunString({ color }: RunStringProps) {
         <span className="mx-6 main-h2-font-size">мерч под ключ</span>
         <span className="mx-6 main-h2-font-size">мерч под ключ</span>
         <span className="mx-6 main-h2-font-size">мерч под ключ</span>
+        <span className="mx-6 main-h2-font-size">мерч под ключ</span>
+        <span className="mx-6 main-h2-font-size">мерч под ключ</span>
+        <span className="mx-6 main-h2-font-size">мерч под ключ</span>
+        <span className="mx-6 main-h2-font-size">мерч под ключ</span>
       </div>
     </section>
   );

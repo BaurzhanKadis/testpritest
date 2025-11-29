@@ -236,7 +236,7 @@ export default function Polezn() {
   }, [calculatePaths]);
 
   return (
-    <section className="main-padding relative bg-white">
+    <section className="main-padding max-w-[1920px] mx-auto relative bg-white">
       {/* Заголовок */}
       {/* <h2 className="md:block hidden main-h2-font-size text-center">
         мы можем быть полезны
