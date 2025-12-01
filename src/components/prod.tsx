@@ -20,15 +20,57 @@ export default function Prod() {
 
   // Все товары
   const originalProducts = [
-    { id: 1, src: su, alt: "Сувениры наклейки", prise: 1100 },
-    { id: 2, src: ter, alt: "Термосы кружки", prise: 1100 },
-    { id: 3, src: pl, alt: "Плащи рюкзаки", prise: 1100 },
-    { id: 4, src: tshirt, alt: "ФУТБОЛКИ", prise: 1100 },
-    { id: 5, src: hudi, alt: "ХУДИ", prise: 1100 },
-    { id: 6, src: svitshirt, alt: "Свитшоты", prise: 1100 },
-    { id: 7, src: longsliv, alt: "ЛОНГСЛИВЫ", prise: 1100 },
-    { id: 8, src: shoppers, alt: "ШОПЕРЫ", prise: 1100 },
-    { id: 9, src: besball, alt: "БЕЙСБОЛКИ", prise: 1100 },
+    {
+      id: 1,
+      title: "СУВЕНИРЫ НАКЛЕЙКИ",
+      src: su,
+      alt: "Сувениры наклейки",
+      prise: 1100,
+    },
+    {
+      id: 2,
+      title: "Термосы кружки",
+      src: ter,
+      alt: "Термосы кружки",
+      prise: 1100,
+    },
+    {
+      id: 3,
+      title: "Плащи рюкзаки",
+      src: pl,
+      alt: "Плащи рюкзаки",
+      prise: 1100,
+    },
+    {
+      id: 4,
+      title: "ФУТБОЛКИ ОВЕРСАЙЗ ПОЛО",
+      src: tshirt,
+      alt: "ФУТБОЛКИ",
+      prise: 1100,
+    },
+    { id: 5, title: "ХУДИ", src: hudi, alt: "ХУДИ", prise: 1100 },
+    {
+      id: 6,
+      title: "Свитшоты",
+      src: svitshirt,
+      alt: "Свитшоты",
+      prise: 1100,
+    },
+    { id: 7, title: "ЛОНГСЛИВЫ", src: longsliv, alt: "ЛОНГСЛИВЫ", prise: 1100 },
+    {
+      id: 8,
+      title: "ШОППЕРЫ",
+      src: shoppers,
+      alt: "ШОППЕРЫ",
+      prise: 1100,
+    },
+    {
+      id: 9,
+      title: "БЕЙСБОЛКИ",
+      src: besball,
+      alt: "БЕЙСБОЛКИ",
+      prise: 1100,
+    },
   ];
 
   // Функции для мобильной пагинации
@@ -78,13 +120,16 @@ export default function Prod() {
         <Slider {...settings}>
           {originalProducts.map((photo) => (
             <div key={photo.id} className="px-2 relative">
-              <div className="w-full h-[400px] rounded-3xl overflow-hidden bg-gray-300">
+              <div className="w-full rounded-3xl bg-[linear-gradient(234.09deg,_#000000_0%,_rgba(255,255,255,0)_100%)] aspect-square backdrop-blur-[1.921250820159912px]">
                 <img
                   src={photo.src}
                   alt={photo.alt}
-                  className="w-full h-full object-cover"
+                  className="h-full"
                   loading="lazy"
                 />
+                <div className=" absolute top-3 right-5 2xl:text-4xl xl:text-2xl lg:text-xl md:text-lg text-xs font-bold text-white uppercase w-1/2 text-right">
+                  {photo.title}
+                </div>
                 <div className=" absolute bottom-[-7px] right-5 border sm:border-[3px] border-[#BF2E82] rounded-full px-3 py-1 bg-[#ffffffcc] backdrop-blur-xs 2xl:text-5xl xl:text-3xl lg:text-2xl md:text-xl sm:text-lg text-[16px] font-extrabold sm:font-bold">
                   от {photo.prise}р
                 </div>
@@ -99,13 +144,16 @@ export default function Prod() {
         <div className="grid grid-cols-2 gap-4 mt-8">
           {displayedProducts.map((product) => (
             <div key={product.id} className="relative">
-              <div className="w-full h-[300px] rounded-3xl overflow-hidden bg-gray-300">
+              <div className="w-full rounded-3xl bg-[linear-gradient(234.09deg,_#000000_0%,_rgba(255,255,255,0)_100%)] aspect-square backdrop-blur-[1.921250820159912px]">
                 <img
                   src={product.src}
                   alt={product.alt}
                   className="w-full h-full object-cover"
                   loading="lazy"
                 />
+                <div className=" absolute top-2 right-3 sm:text-base text-xs font-bold text-white uppercase w-1/2 text-right ">
+                  {product.title}
+                </div>
                 <div className="absolute bottom-[-7px] right-2 border-2 border-[#BF2E82] rounded-full px-2 py-1 bg-[#ffffffcc] backdrop-blur-xs text-sm font-bold">
                   от {product.prise}р
                 </div>

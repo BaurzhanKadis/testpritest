@@ -54,13 +54,13 @@ export default function Dev() {
     },
   ];
   return (
-    <section className="main-padding text-center max-w-[1920px] mx-auto">
+    <section className="main-padding text-center max-w-[1920px] mx-auto overflow-hidden">
       <div className="md:hidden block ">
         <h2 className="text-center main-h2-font-size text-black ">
           Разработаем ваш фирменный мерч под ключ
         </h2>
       </div>
-      <div className="md:hidden block relative">
+      <div className="md:hidden block relative ">
         <div className="flex flex-col mb-4 justify-center items-start">
           {data.map((i) => (
             <div

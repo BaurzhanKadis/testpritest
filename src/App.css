@@ -441,7 +441,7 @@ body #root .review-labss {
 
 @media (max-width: 500px) {
   .swiper_container {
-    height: 40rem;
+    height: 33rem;
   }
   .swiper-slide {
     width: 20rem !important;
@@ -583,4 +583,19 @@ body #root .review-labss {
   .robots .swiper_container {
     height: 33rem;
   }
+}
+
+/* стили для отзывов */
+.iRPtey .gScAaA {
+  max-width: none !important;
+}
+
+/* slick-prev */
+.slick-prev::before,
+.slick-next::before {
+  color: #bf2e82 !important;
+  font-size: 40px !important;
+}
+.slick-prev {
+  left: -45px !important;
 }
