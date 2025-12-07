@@ -1,6 +1,7 @@
 import Button from "../assets/sherad/button";
 import devImg1 from "../assets/img/fon-hudi-dev.png";
 import devImg2 from "../assets/img/fon-termos-dev.png";
+import devImg3 from "../assets/img/fonforhudi.png";
 export default function Dev() {
   // Функция для плавного скролла
   const handleScroll = () => {
@@ -54,7 +55,17 @@ export default function Dev() {
     },
   ];
   return (
-    <section className="main-padding text-center max-w-[1920px] mx-auto overflow-hidden">
+    <section className="main-padding relative text-center max-w-[1920px] mx-auto ">
+      <img
+        className="absolute top-[-5%] right-[-30%] w-[70%] blur-[1.5px] rotate-[-15deg] md:block hidden"
+        src={devImg3}
+        alt="devImg3"
+      />
+      <img
+        className="absolute bottom-2 left-0 w-[15%] md:block hidden"
+        src={devImg2}
+        alt="devImg2"
+      />
       <div className="md:hidden block ">
         <h2 className="text-center main-h2-font-size text-black ">
           Разработаем ваш фирменный мерч под ключ

@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState, useCallback } from "react";
-
+import arrowpink from "../assets/img/arrowpink.png";
 export default function Polezn() {
   const data = [
     {
@@ -275,6 +275,11 @@ export default function Polezn() {
         ref={containerRef}
         className="md:flex hidden flex-wrap justify-between 2xl:gap-y-10 xl:gap-y-8 lg:gap-y-6 relative"
       >
+        <img
+          className=" absolute top-1/2 -left-[10%] w-[15%]"
+          src={arrowpink}
+          alt=""
+        />
         {/* SVG с волновыми путями */}
         {paths.length > 0 && (
           <svg

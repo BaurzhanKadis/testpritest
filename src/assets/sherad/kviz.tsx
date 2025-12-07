@@ -12,9 +12,9 @@ import timeImg from "../../assets/img/time.png";
 interface QuizStep {
   title: string;
   subtitle: string;
-  options: string[];
-  type: "multiple" | "single";
-  key: keyof QuizAnswers;
+  options?: string[];
+  type: "multiple" | "single" | "contact";
+  key?: keyof QuizAnswers;
   img: string;
 }
 
@@ -25,6 +25,8 @@ interface QuizAnswers {
   quantity: string;
   design: string;
   urgency: string;
+  phone: string;
+  email: string;
 }
 
 export default function Kviz() {
@@ -38,6 +40,8 @@ export default function Kviz() {
     quantity: "",
     design: "",
     urgency: "",
+    phone: "",
+    email: "",
   });
 
   // Состояние для кастомных вводов
@@ -137,11 +141,18 @@ export default function Kviz() {
       key: "urgency",
       img: timeImg,
     },
+    6: {
+      title: "Оставьте контактные данные",
+      subtitle: "Мы свяжемся с вами для обсуждения деталей",
+      type: "contact",
+      img: timeImg,
+    },
   };
 
   // Универсальный обработчик для всех типов вопросов
   const handleOptionChange = (option: string) => {
     const currentData = quizData[currentStep];
+    if (!currentData.key) return;
     const key = currentData.key;
 
     setAnswers((prev) => {
@@ -164,6 +175,7 @@ export default function Kviz() {
   // Обработчик для кастомного ввода
   const handleCustomInputChange = (value: string) => {
     const currentData = quizData[currentStep];
+    if (!currentData.key) return;
     const key = currentData.key as keyof typeof customInputs;
 
     setCustomInputs((prev) => ({
@@ -192,12 +204,31 @@ export default function Kviz() {
     });
   };
 
+  // Обработчик для полей контактов
+  const handleContactChange = (field: "phone" | "email", value: string) => {
+    setAnswers((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+  };
+
   const handleNext = () => setCurrentStep((prev) => prev + 1);
   const handleBack = () => setCurrentStep((prev) => prev - 1);
 
   // Универсальная проверка валидности
   const isStepValid = () => {
     const currentData = quizData[currentStep];
+
+    // Для шага контактов проверяем phone и email
+    if (currentData.type === "contact") {
+      const phoneValid = answers.phone.trim() !== "";
+      const emailValid =
+        answers.email.trim() !== "" &&
+        /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(answers.email);
+      return phoneValid && emailValid;
+    }
+
+    if (!currentData.key) return false;
     const value = answers[currentData.key];
     const hasValidAnswer =
       currentData.type === "multiple" ? value.length > 0 : value !== "";
@@ -231,6 +262,8 @@ export default function Kviz() {
         .map((item) =>
           item.startsWith("custom_") ? item.replace("custom_", "") : item
         ),
+      phone: answers.phone.trim(),
+      email: answers.email.trim(),
     };
 
     console.log("Результаты квиза:", cleanAnswers);
@@ -241,9 +274,9 @@ export default function Kviz() {
     // <div className=" md:p-5 p-2 md:border-4 border-2 border-[#bf2e82] rounded-2xl">
     <div
       id="kviz__cards"
-      className=" md:p-10 p-2 md:border-4 border-2 border-[#bf2e82] rounded-2xl lg:w-[80%] w-full"
+      className=" md:p-10 p-2 md:border-4 border-2 border-[#bf2e82] rounded-2xl lg:w-[80%] w-full relative"
     >
-      {currentStep <= 5 && (
+      {currentStep <= 6 && (
         <div
           key={currentStep}
           className="kviz__card relative kviz__card-animated overflow-hidden"
@@ -252,61 +285,102 @@ export default function Kviz() {
           <p className="font-bold 2xl:text-4xl xl:text-2xl lg:text-xl md:text-lg sm:text-base text-sm text-[#8d8d8d] md:mb-20 mb-10">
             {currentData.subtitle}
           </p>
-          <div className="flex flex-col gap-4 mb-8">
-            {currentData.options.map((option: string, index: number) => (
-              <div key={index}>
-                {option === "Другое" ? (
-                  // Специальный блок для "Другое" с инпутом
-                  <div className="flex items-center lg:gap-12 gap-4">
-                    <input
-                      type={
-                        currentData.type === "multiple" ? "checkbox" : "radio"
-                      }
-                      name={`step-${currentStep}`}
-                      checked={
-                        currentData.type === "multiple"
-                          ? answers[currentData.key].includes("Другое")
-                          : answers[currentData.key] === "Другое"
-                      }
-                      onChange={() => handleOptionChange("Другое")}
-                      className="md:w-10 md:h-10 w-6 h-6 cursor-pointer appearance-none relative rounded-lg bg-[#d9d9d9] checked:bg-[#d01485] checked:border-[#d01485] checked:after:content-['✓'] checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2 checked:after:-translate-y-1/2 checked:after:text-white checked:after:text-3xl checked:after:font-bold"
-                    />
-                    <input
-                      type="text"
-                      placeholder="Другое"
-                      value={
-                        customInputs[
-                          currentData.key as keyof typeof customInputs
-                        ] || ""
-                      }
-                      onChange={(e) => handleCustomInputChange(e.target.value)}
-                      className=" px-4 md:py-3 py-2 rounded-lg bg-[#d9d9d9] 2xl:text-4xl xl:text-2xl lg:text-xl md:text-lg sm:text-base text-xs font-bold text-black placeholder-black focus:outline-none focus:ring-2 focus:ring-[#d01485] focus:bg-white transition-colors"
-                    />
-                  </div>
-                ) : (
-                  // Обычные опции
-                  <label className="flex items-center lg:gap-12 gap-4 cursor-pointer rounded-lg transition-colors duration-200 hover:bg-[#f8f9fa]">
-                    <input
-                      type={
-                        currentData.type === "multiple" ? "checkbox" : "radio"
-                      }
-                      name={`step-${currentStep}`}
-                      checked={
-                        currentData.type === "multiple"
-                          ? answers[currentData.key].includes(option)
-                          : answers[currentData.key] === option
-                      }
-                      onChange={() => handleOptionChange(option)}
-                      className="md:w-10 md:h-10 w-6 h-6 cursor-pointer appearance-none relative rounded-lg bg-[#d9d9d9] checked:bg-[#d01485] checked:border-[#d01485] checked:after:content-['✓'] checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2 checked:after:-translate-y-1/2 checked:after:text-white checked:after:text-3xl checked:after:font-bold"
-                    />
-                    <span className="2xl:text-4xl xl:text-2xl lg:text-xl md:text-lg sm:text-base text-xs font-bold text-black">
-                      {option}
-                    </span>
-                  </label>
-                )}
+          {currentData.type === "contact" ? (
+            // Форма для контактов
+            <div className="flex flex-col gap-6 mb-8 p-1">
+              <div className="flex flex-col gap-2 w-[70%]">
+                <label className="2xl:text-2xl xl:text-xl lg:text-lg md:text-base sm:text-sm text-xs font-bold text-black">
+                  Номер телефона
+                </label>
+                <input
+                  type="tel"
+                  placeholder="+7 (999) 123-45-67"
+                  value={answers.phone}
+                  onChange={(e) => handleContactChange("phone", e.target.value)}
+                  className="px-4 md:py-3 py-2 rounded-lg bg-[#d9d9d9] 2xl:text-4xl xl:text-2xl lg:text-xl md:text-lg sm:text-base text-xs font-bold text-black placeholder-[#8d8d8d] focus:outline-none focus:ring-2 focus:ring-[#d01485] focus:bg-white transition-colors"
+                />
               </div>
-            ))}
-          </div>
+              <div className="flex flex-col gap-2 w-[70%]">
+                <label className="2xl:text-2xl xl:text-xl lg:text-lg md:text-base sm:text-sm text-xs font-bold text-black">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  placeholder="example@mail.com"
+                  value={answers.email}
+                  onChange={(e) => handleContactChange("email", e.target.value)}
+                  className="px-4 md:py-3 py-2 rounded-lg bg-[#d9d9d9] 2xl:text-4xl xl:text-2xl lg:text-xl md:text-lg sm:text-base text-xs font-bold text-black placeholder-[#8d8d8d] focus:outline-none focus:ring-2 focus:ring-[#d01485] focus:bg-white transition-colors"
+                />
+              </div>
+            </div>
+          ) : (
+            (() => {
+              if (!currentData.key) return null;
+              const key = currentData.key;
+              return (
+                <div className="flex flex-col gap-4 mb-8">
+                  {currentData.options?.map((option: string, index: number) => (
+                    <div key={index}>
+                      {option === "Другое" ? (
+                        // Специальный блок для "Другое" с инпутом
+                        <div className="flex items-center lg:gap-12 gap-4">
+                          <input
+                            type={
+                              currentData.type === "multiple"
+                                ? "checkbox"
+                                : "radio"
+                            }
+                            name={`step-${currentStep}`}
+                            checked={
+                              currentData.type === "multiple"
+                                ? answers[key].includes("Другое")
+                                : answers[key] === "Другое"
+                            }
+                            onChange={() => handleOptionChange("Другое")}
+                            className="md:w-10 md:h-10 w-6 h-6 cursor-pointer appearance-none relative rounded-lg bg-[#d9d9d9] checked:bg-[#d01485] checked:border-[#d01485] checked:after:content-['✓'] checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2 checked:after:-translate-y-1/2 checked:after:text-white checked:after:text-3xl checked:after:font-bold"
+                          />
+                          <input
+                            type="text"
+                            placeholder="Другое"
+                            value={
+                              customInputs[key as keyof typeof customInputs] ||
+                              ""
+                            }
+                            onChange={(e) =>
+                              handleCustomInputChange(e.target.value)
+                            }
+                            className=" px-4 md:py-3 py-2 rounded-lg bg-[#d9d9d9] 2xl:text-4xl xl:text-2xl lg:text-xl md:text-lg sm:text-base text-xs font-bold text-black placeholder-[#8d8d8d] focus:outline-none focus:ring-2 focus:ring-[#d01485] focus:bg-white transition-colors"
+                          />
+                        </div>
+                      ) : (
+                        // Обычные опции
+                        <label className="flex items-center lg:gap-12 gap-4 cursor-pointer rounded-lg transition-colors duration-200 hover:bg-[#f8f9fa]">
+                          <input
+                            type={
+                              currentData.type === "multiple"
+                                ? "checkbox"
+                                : "radio"
+                            }
+                            name={`step-${currentStep}`}
+                            checked={
+                              currentData.type === "multiple"
+                                ? answers[key].includes(option)
+                                : answers[key] === option
+                            }
+                            onChange={() => handleOptionChange(option)}
+                            className="md:w-10 md:h-10 w-6 h-6 cursor-pointer appearance-none relative rounded-lg bg-[#d9d9d9] checked:bg-[#d01485] checked:border-[#d01485] checked:after:content-['✓'] checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2 checked:after:-translate-y-1/2 checked:after:text-white checked:after:text-3xl checked:after:font-bold"
+                          />
+                          <span className="2xl:text-4xl xl:text-2xl lg:text-xl md:text-lg sm:text-base text-xs font-bold text-black">
+                            {option}
+                          </span>
+                        </label>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              );
+            })()
+          )}
           <div className="z-0 kviz__card-decoration absolute lg:top-[8%] top-auto lg:bottom-0 bottom-[10%] w-[40%] right-[2%]">
             <div className="kviz__heart-3d">
               <img
@@ -325,7 +399,7 @@ export default function Kviz() {
                 Назад
               </button>
             )}
-            {currentStep < 5 ? (
+            {currentStep < 6 ? (
               <button
                 className="bg-gradient-to-r from-[#d01485] to-[#e07be0] text-white border-none rounded-full md:px-15 px-10 md:py-3 py-2 2xl:text-4xl xl:text-2xl lg:text-xl md:text-lg sm:text-base text-sm font-bold text-center cursor-pointer transition-all duration-200 hover:not-disabled:-translate-y-0.5 hover:not-disabled:shadow-[0_6px_20px_rgba(208,20,133,0.3)] disabled:bg-[#ccc] disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none"
                 onClick={handleNext}

@@ -1,12 +1,7 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/effect-coverflow";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
 import client from "../assets/svg/client1.jpg";
 import client2 from "../assets/svg/client2.jpg";
 import client3 from "../assets/svg/client3.png";
+import Gallary from "../assets/sherad/gallary";
 
 export default function Testt() {
   // Примеры фотографий клиентов (замените на реальные)
@@ -34,54 +29,7 @@ export default function Testt() {
         </div>
 
         {/* Галерея */}
-        <div className="relative">
-          <Swiper
-            effect={"coverflow"}
-            grabCursor={true}
-            centeredSlides={true}
-            loop={true}
-            slidesPerView={"auto"}
-            preventClicks={true}
-            coverflowEffect={{
-              rotate: 0,
-              stretch: 0,
-              depth: 100,
-              modifier: 2.5,
-            }}
-            pagination={{ el: ".swiper-pagination", clickable: true }}
-            navigation={{
-              nextEl: ".swiper-button-next",
-              prevEl: ".swiper-button-prev",
-            }}
-            modules={[EffectCoverflow, Pagination, Navigation]}
-            className="swiper_container"
-            breakpoints={{
-              // 320: {
-              //   slidesPerView: 1.2,
-              //   spaceBetween: -20,
-              // },
-              768: {
-                slidesPerView: 2.5,
-                spaceBetween: -50,
-              },
-              1024: {
-                slidesPerView: 3,
-                spaceBetween: -100,
-              },
-            }}
-          >
-            {originalPhotos.map((photo) => (
-              <SwiperSlide key={photo.id}>
-                <img
-                  src={photo.src}
-                  alt={photo.alt}
-                  className="w-full h-full object-cover rounded-3xl"
-                />
-              </SwiperSlide>
-            ))}
-            <div className="swiper-pagination"></div>
-          </Swiper>
-        </div>
+        <Gallary originalPhotos={originalPhotos} className="" />
       </div>
     </section>
   );

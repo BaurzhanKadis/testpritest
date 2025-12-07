@@ -31,7 +31,7 @@ function App() {
   };
   return (
     <>
-      <div className="mx-auto">
+      <div className="mx-auto overflow-hidden">
         {/* banner */}
         <section className="max-w-[1920px] mx-auto flex flex-row items-center justify-center md:h-screen w-full lg:px-30 md:px-20 sm:px-10 px-5 md:0 py-5 bg-[url('assets/img/banner-new.png')] md:bg-contain bg-size-[65%] md:bg-center bg-[85%] bg-no-repeat">
           <div className="  h-full w-full flex flex-col md:flex-row items-center md:justify-between relative">
