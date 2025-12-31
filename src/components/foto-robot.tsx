@@ -10,6 +10,14 @@ import vii from "../assets/svg/vii.png";
 import viii from "../assets/svg/viii.png";
 import ix from "../assets/svg/ix.png";
 import x from "../assets/svg/x.png";
+import xi from "../assets/svg/xi.png";
+import xii from "../assets/svg/xii.png";
+import xiii from "../assets/svg/xiii.png";
+import xiv from "../assets/svg/xiv.png";
+import xv from "../assets/svg/xv.png";
+import xvi from "../assets/svg/xvi.png";
+import xvii from "../assets/svg/xvii.png";
+import xviii from "../assets/svg/xviii.png";
 import Gallary from "../assets/sherad/gallary";
 
 export default function FotoRobot() {
@@ -25,6 +33,14 @@ export default function FotoRobot() {
     { id: 8, src: viii, alt: "Клиент 8" },
     { id: 9, src: ix, alt: "Клиент 8" },
     { id: 10, src: x, alt: "Клиент 8" },
+    { id: 11, src: xi, alt: "Клиент 8" },
+    { id: 12, src: xii, alt: "Клиент 8" },
+    { id: 13, src: xiii, alt: "Клиент 8" },
+    { id: 14, src: xiv, alt: "Клиент 8" },
+    { id: 15, src: xv, alt: "Клиент 8" },
+    { id: 16, src: xvi, alt: "Клиент 8" },
+    { id: 17, src: xvii, alt: "Клиент 8" },
+    { id: 18, src: xviii, alt: "Клиент 8" },
   ];
 
   return (

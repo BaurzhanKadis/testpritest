@@ -267,6 +267,49 @@ export default function Kviz() {
     };
 
     console.log("Результаты квиза:", cleanAnswers);
+
+    // Записываем ответы в input поля по классам
+    Object.keys(cleanAnswers).forEach((key) => {
+      const field = document.querySelector(`.wpcf7-text.${key}`) as
+        | HTMLInputElement
+        | HTMLTextAreaElement
+        | null;
+
+      if (!field) {
+        console.warn(`Поле с классом .wpcf7-text.${key} не найдено`);
+        return;
+      }
+
+      if (field) {
+        const value = cleanAnswers[key as keyof typeof cleanAnswers];
+
+        // Для массивов объединяем в строку через запятую
+        if (Array.isArray(value)) {
+          field.value = value.join(", ");
+        } else if (value != null) {
+          field.value = String(value);
+        } else {
+          // Для одиночных значений записываем как есть
+          field.value = value || "";
+        }
+
+        // Триггерим событие input для обновления состояния формы
+        const event = new Event("input", { bubbles: true });
+        field.dispatchEvent(event);
+      }
+    });
+
+    console.log("Результаты квиза:", cleanAnswers);
+
+    // Находим кнопку с классом btn__replica и имитируем клик
+    const replicaButton = document.querySelector(
+      ".btn__replica"
+    ) as HTMLElement | null;
+    if (replicaButton) {
+      replicaButton.click();
+    } else {
+      console.warn("Кнопка с классом .btn__replica не найдена");
+    }
   };
 
   const currentData = quizData[currentStep];

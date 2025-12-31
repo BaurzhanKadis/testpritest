@@ -1,19 +1,21 @@
-import client from "../assets/svg/client1.jpg";
+import client1 from "../assets/svg/client1.jpg";
 import client2 from "../assets/svg/client2.jpg";
 import client3 from "../assets/svg/client3.png";
+import client4 from "../assets/svg/client4.jpg";
+import client5 from "../assets/svg/client5.jpg";
+import client6 from "../assets/svg/client6.jpg";
+
 import Gallary from "../assets/sherad/gallary";
 
 export default function Testt() {
   // Примеры фотографий клиентов (замените на реальные)
   const originalPhotos = [
-    { id: 1, src: client, alt: "Клиент 1" },
+    { id: 1, src: client1, alt: "Клиент 1" },
     { id: 2, src: client2, alt: "Клиент 2" },
     { id: 3, src: client3, alt: "Клиент 3" },
-    { id: 4, src: client, alt: "Клиент 4" },
-    { id: 5, src: client2, alt: "Клиент 5" },
-    { id: 6, src: client3, alt: "Клиент 6" },
-    { id: 7, src: client, alt: "Клиент 7" },
-    { id: 8, src: client2, alt: "Клиент 8" },
+    { id: 4, src: client4, alt: "Клиент 4" },
+    { id: 5, src: client5, alt: "Клиент 5" },
+    { id: 6, src: client6, alt: "Клиент 6" },
   ];
 
   return (

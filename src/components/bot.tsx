@@ -1,10 +1,16 @@
 import BotImg from "../assets/img/bot-umerch.png";
+import Button from "../assets/sherad/button";
+import telegram from "../assets/svg/tg.png";
 const data = [
   { t: "Работает быстро, понятно и удобно" },
   { t: "Помогает даже с голосовыми сообщениями" },
   { t: "Автоматизирует рутину — человек подключается на финальном этапе" },
 ];
 export default function Bot() {
+  const handleScroll = () => {
+    window.open("https://t.me/LOS_PRINTOS_BOT", "_blank");
+  };
+
   return (
     <section className="max-w-[1920px] mx-auto overflow-x-clip relative bg-[#222] xl:rounded-4xl md:rounded-2xl rounded-lg md:py-8 py-4 main-padding">
       <h2 className="main-h2-font-size text-white md:text-left text-center">
@@ -30,12 +36,23 @@ export default function Bot() {
               {i.t}
             </p>
           ))}
+          <div className="flex flex-row items-center gap-2 mb-2 mt-4">
+            <img
+              className="md:w-10 md:h-10 h-5 w-5"
+              src={telegram}
+              alt="telegram"
+            />
+            <p className="text-white font-bold 2xl:text-4xl xl:text-3xl lg:text-2xl md:text-xl sm:text-lg text-sm w-full">
+              LOS_PRINTOS_BOT
+            </p>
+          </div>
+          <Button text="Написать" handleScroll={handleScroll} className="" />
         </div>
         <div className=" w-1/2 relative ">
           <img
             src={BotImg}
             alt="BotImg"
-            className="md:w-[75%] w-full right-0 2xl:bottom-[-28%] xl:bottom-[-22%] bottom-[9%] max-[500px]:scale-[2] md:translate-y-0 absolute h-auto scale-x-[-1] md:right-10"
+            className="md:w-[75%] w-full right-0 2xl:bottom-[-23%] xl:bottom-[-18%] bottom-[9%] max-[500px]:scale-[2] md:translate-y-0 absolute h-auto scale-x-[-1] md:right-10"
           />
         </div>
       </div>
